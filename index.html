@@ -24,12 +24,6 @@
 
     <section class="hero">
         <div class="hero-content">
-            <!-- TAG DE DISPONIBILIDADE -->
-            <div class="availability-badge">
-                <span class="pulse-dot"></span>
-                <span>Disponível para novas oportunidades</span>
-            </div>
-
             <p class="hero-subtitle">
                 DESENVOLVEDOR FULL STACK EM FORMAÇÃO
             </p>
@@ -61,7 +55,7 @@
             <div class="about-text">
                 <p>Sou estudante de Análise e Desenvolvimento de Sistemas e estou construindo minha trajetória na área de tecnologia.</p>
                 <p>Meu foco é me desenvolver como <strong>Desenvolvedor Full Stack</strong>, aprimorando meus conhecimentos em programação, desenvolvimento web, APIs e banco de dados.</p>
-                <p>Gosto de aprender colocando a mão no código. Cada projeto que desenvolvo é uma oportunidade de transformar conhecimento em algo funcional.</p>
+
             </div>
             
             <div class="about-stats">
@@ -384,6 +378,11 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const sections = document.querySelectorAll("section");
+
+        // Deixa a primeira seção visível imediatamente ao carregar
+        if (sections.length > 0) {
+            sections[0].classList.add("visible");
+        }
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
