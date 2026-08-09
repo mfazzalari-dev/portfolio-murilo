@@ -11,7 +11,7 @@ Portfólio profissional desenvolvido para apresentar minha trajetória como **De
 Este projeto foi construído utilizando as seguintes tecnologias:
 
 * **HTML5** — Estruturação semântica das páginas.
-* **CSS3** — Estilização moderna, variáveis customizadas, layout responsivo e modo escuro/claro.
+* **CSS3** — Estilização moderna, variáveis customizadas, layout responsivo e **suporte a tema claro/escuro**.
 * **JavaScript (ES6+)** — Dinamismo da interface, navegação suave por scroll, menu ativo dinâmico e modais.
 * **Git & GitHub** — Controle de versão e hospedagem.
 
