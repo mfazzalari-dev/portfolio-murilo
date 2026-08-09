@@ -1,5 +1,98 @@
 /* ==========================================
-   RESET & VARIÁVEIS (DARK GLASS + PRATA)
+   VARIÁVEIS DE TEMA (DARK / LIGHT)
+   ========================================== */
+:root {
+    --bg-base: #020408;
+    --bg-gradient: linear-gradient(rgba(2, 4, 8, 0.78), rgba(2, 4, 8, 0.78)),
+                    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.35) 0%, transparent 45%),
+                    radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.30) 0%, transparent 45%),
+                    radial-gradient(circle at 50% 50%, rgba(30, 58, 138, 0.25) 0%, transparent 65%);
+    --text-color: #94a3b8;
+    --text-heading: #f8fafc;
+    --text-hero-span: #e2e8f0;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --card-bg-hover: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-border-hover: #38bdf8;
+    --header-bg: rgba(13, 17, 23, 0.7);
+    --header-border: rgba(255, 255, 255, 0.08);
+    --modal-bg: #0d1117;
+}
+
+body.light-theme {
+    --bg-base: #f1f5f9;
+    --bg-gradient: linear-gradient(rgba(241, 245, 249, 0.92), rgba(241, 245, 249, 0.92)),
+                    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.18) 0%, transparent 45%),
+                    radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.15) 0%, transparent 45%),
+                    radial-gradient(circle at 50% 50%, rgba(30, 58, 138, 0.1) 0%, transparent 65%);
+    --text-color: #334155;
+    --text-heading: #0f172a;
+    --text-hero-span: #0284c7;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-bg-hover: rgba(255, 255, 255, 1);
+    --card-border: rgba(0, 0, 0, 0.12);
+    --card-border-hover: #0284c7;
+    --header-bg: rgba(255, 255, 255, 0.9);
+    --header-border: rgba(0, 0, 0, 0.1);
+    --modal-bg: #ffffff;
+}
+
+/* ==========================================
+   FUNDO DINÂMICO
+   ========================================== */
+body {
+    background-color: var(--bg-base);
+    background-image: var(--bg-gradient);
+    background-size: 250% 250%;
+    animation: gradientLoop 14s linear infinite;
+    position: relative;
+    overflow-x: hidden;
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+@keyframes gradientLoop {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50px;
+    right: -50px;
+    width: 600px;
+    height: 600px;
+    background: rgba(56, 189, 248, 0.12);
+    filter: blur(140px);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 40%;
+    left: -100px;
+    width: 700px;
+    height: 700px;
+    background: rgba(59, 130, 246, 0.12);
+    filter: blur(160px);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+h1, h2, h3 {
+    color: var(--text-heading);
+    transition: color 0.4s ease;
+}
+
+/* ==========================================
+   RESET & VARIÁVEIS
    ========================================== */
 * {
     margin: 0;
@@ -9,46 +102,58 @@
     scroll-behavior: smooth;
 }
 
-body {
-    background-color: #080a0f;
-    background-image: 
-        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.04) 0%, transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(148, 163, 184, 0.04) 0%, transparent 40%);
-    color: #cbd5e1; /* Prata/Branco vidro base */
-    line-height: 1.6;
-    overflow-x: hidden;
-    min-height: 100vh;
+html {
+    scroll-behavior: smooth;
 }
 
-/* ==========================================
-   ANIMAÇÃO DE DESLIZE E SURGIMENTO SUAVE
-   ========================================== */
 section {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     padding: 100px 10%;
-    will-change: opacity, transform;
 }
 
-section.visible {
+section.visible, .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
 
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
 /* ==========================================
-   HEADER / NAVEGAÇÃO (PRETO VIDRO)
+   HEADER / NAVEGAÇÃO
    ========================================== */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(13, 17, 23, 0.7);
+    background: var(--header-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--header-border);
     z-index: 1000;
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+}
+
+header nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 header nav ul {
@@ -56,11 +161,11 @@ header nav ul {
     justify-content: center;
     list-style: none;
     gap: 30px;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 header nav ul li a {
-    color: #94a3b8; /* Prata vidro */
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
@@ -68,8 +173,47 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: #f8fafc;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    color: var(--text-heading);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+header nav ul li a.active {
+    color: var(--text-heading);
+    position: relative;
+}
+
+header nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #38bdf8;
+    border-radius: 2px;
+}
+
+.theme-toggle-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-heading);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--card-border-hover);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    transform: scale(1.05);
 }
 
 /* ==========================================
@@ -87,7 +231,7 @@ header nav ul li a:hover {
 }
 
 .hero-subtitle {
-    color: #94a3b8;
+    color: var(--text-color);
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 2px;
@@ -96,20 +240,19 @@ header nav ul li a:hover {
 
 .hero h1 {
     font-size: 3.5rem;
-    color: #f1f5f9;
     line-height: 1.2;
     margin-bottom: 20px;
 }
 
 .hero h1 span {
-    color: #e2e8f0;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    color: var(--text-hero-span);
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
 }
 
 .hero-description {
     font-size: 1.15rem;
     margin-bottom: 35px;
-    color: #94a3b8;
+    color: var(--text-color);
 }
 
 /* ==========================================
@@ -120,11 +263,11 @@ header nav ul li a:hover {
     align-items: center;
     gap: 10px;
     padding: 12px 28px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    color: #f1f5f9;
+    color: var(--text-heading);
     text-decoration: none;
     border-radius: 10px;
     font-weight: 500;
@@ -132,22 +275,22 @@ header nav ul li a:hover {
 }
 
 .btn-glass:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+    background: var(--card-bg-hover);
+    border-color: var(--card-border-hover);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     transform: translateY(-2px);
 }
 
 .btn-glass.primary {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(56, 189, 248, 0.9);
     color: #0b0f19;
     border: none;
     font-weight: 600;
 }
 
 .btn-glass.primary:hover {
-    background: #ffffff;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    background: #38bdf8;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
 }
 
 /* ==========================================
@@ -158,7 +301,7 @@ header nav ul li a:hover {
 }
 
 .section-title p {
-    color: #94a3b8;
+    color: var(--text-color);
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 1.5px;
@@ -167,37 +310,42 @@ header nav ul li a:hover {
 
 .section-title h2 {
     font-size: 2.2rem;
-    color: #f8fafc;
 }
 
 .section-title h2 span {
-    color: #94a3b8;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
 }
 
 /* ==========================================
-   CARDS / "BOLHAS" COM CONTORNO BRILHANTE PRATA VIDRO AO PASSAR O MOUSE
+   CARDS / "BOLHAS" GERAIS
    ========================================== */
 .stat-card, 
 .skill-card, 
+.skills-card,
+.tech-card,
 .education-card, 
-.project-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+.project-card,
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 16px;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .stat-card:hover, 
 .skill-card:hover, 
+.skills-card:hover,
+.tech-card:hover,
 .education-card:hover, 
-.project-card:hover {
+.project-card:hover,
+.card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.45); /* Contorno brilhante prata vidro */
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.12), inset 0 0 15px rgba(255, 255, 255, 0.05);
+    background: var(--card-bg-hover);
+    border-color: var(--card-border-hover);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), 0 0 15px rgba(56, 189, 248, 0.15);
 }
 
 /* ==========================================
@@ -213,11 +361,11 @@ header nav ul li a:hover {
 .about-text p {
     margin-bottom: 20px;
     font-size: 1.05rem;
-    color: #94a3b8;
+    color: var(--text-color);
 }
 
 .about-text strong {
-    color: #f1f5f9;
+    color: var(--text-heading);
 }
 
 .about-stats {
@@ -234,14 +382,14 @@ header nav ul li a:hover {
 .stat-number {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #f1f5f9;
+    color: var(--text-heading);
     margin-bottom: 5px;
 }
 
 .stat-label {
     font-size: 0.75rem;
     letter-spacing: 1px;
-    color: #64748b;
+    color: var(--text-color);
 }
 
 /* ==========================================
@@ -261,13 +409,13 @@ header nav ul li a:hover {
 .skill-number {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #475569;
+    color: var(--text-color);
+    opacity: 0.7;
     margin-bottom: 15px;
     display: block;
 }
 
 .skill-card h3 {
-    color: #f8fafc;
     font-size: 1.25rem;
     margin-bottom: 10px;
 }
@@ -275,16 +423,16 @@ header nav ul li a:hover {
 .skill-card p {
     font-size: 0.95rem;
     margin-bottom: 20px;
-    color: #94a3b8;
+    color: var(--text-color);
 }
 
 .skill-tags span, .project-techs span, .education-tags span {
-    background: rgba(255, 255, 255, 0.04);
-    color: #cbd5e1;
+    background: var(--card-bg);
+    color: var(--text-heading);
     font-size: 0.75rem;
     padding: 5px 12px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--card-border);
 }
 
 .skill-tags, .project-techs, .education-tags {
@@ -312,7 +460,8 @@ header nav ul li a:hover {
 .education-number {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #475569;
+    color: var(--text-color);
+    opacity: 0.7;
 }
 
 .education-content {
@@ -328,30 +477,29 @@ header nav ul li a:hover {
 
 .education-institution {
     font-size: 0.8rem;
-    color: #94a3b8;
+    color: var(--text-color);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
 }
 
 .education-header h3 {
-    color: #f8fafc;
     font-size: 1.2rem;
 }
 
 .education-status {
-    background: rgba(255, 255, 255, 0.05);
-    color: #e2e8f0;
+    background: var(--card-bg);
+    color: var(--text-heading);
     font-size: 0.75rem;
     padding: 4px 12px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--card-border);
 }
 
 .education-content > p {
     font-size: 0.95rem;
     margin-bottom: 15px;
-    color: #94a3b8;
+    color: var(--text-color);
 }
 
 /* ==========================================
@@ -361,13 +509,29 @@ header nav ul li a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
+    width: 100%;
 }
 
 .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-card.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    display: none;
 }
 
 .project-header {
@@ -379,15 +543,15 @@ header nav ul li a:hover {
 
 .project-tag {
     font-size: 0.75rem;
-    color: #94a3b8;
-    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-color);
+    background: var(--card-bg);
     padding: 4px 10px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--card-border);
 }
 
 .project-links a {
-    color: #94a3b8;
+    color: var(--text-color);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
@@ -395,12 +559,11 @@ header nav ul li a:hover {
 }
 
 .project-links a:hover {
-    color: #f8fafc;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    color: #38bdf8;
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
 }
 
 .project-card h3 {
-    color: #f8fafc;
     font-size: 1.3rem;
     margin-bottom: 12px;
 }
@@ -408,41 +571,622 @@ header nav ul li a:hover {
 .project-card p {
     font-size: 0.95rem;
     margin-bottom: 25px;
-    color: #94a3b8;
+    color: var(--text-color);
+}
+
+.project-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.project-techs span {
+    background: rgba(255, 255, 255, 0.03);
+    color: #f8fafc;
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ==========================================
-   CONTATO (CONTACT)
+   CONTATO (CONTACT) - CORREÇÃO DE ALINHAMENTO
    ========================================== */
+#contato {
+    width: 100%;
+    max-width: 100%;
+    padding: 100px 10%; /* Mantém o mesmo padding lateral padrão das outras seções */
+    margin: 0 auto;
+}
+
+#contato .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
 .contact-content {
     max-width: 700px;
 }
 
-.contact-content p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    color: #94a3b8;
+.contact-content p,
+.contact-description {
+    font-size: 1rem;
+    color: var(--text-muted, #9ca3af);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+#contato .section-title {
+    width: 100%;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
 }
 
 .contact-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    justify-content: flex-start !important;
 }
 
 /* ==========================================
-   RESPONSIVIDADE
+   BARRA DE PROGRESSO DE SCROLL
    ========================================== */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    width: 0%;
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+}
+
+/* ==========================================
+   FILTROS DE PROJETOS
+   ========================================== */
+.project-filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.5);
+    color: var(--text-heading);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+/* ==========================================
+   BADGE DE DISPONIBILIDADE E RADAR MAIS FORTE
+   ========================================== */
+.hero .status-badge,
+header + .status-badge,
+.hero-content .status-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: fit-content !important;
+    gap: 14px !important;
+    padding: 10px 20px !important;
+    background: var(--card-bg, rgba(255, 255, 255, 0.03)) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08)) !important;
+    border-radius: 50px !important;
+    font-size: 0.95rem !important;
+    color: var(--text-color, #fff) !important;
+    margin-bottom: 25px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Ponto central do radar ajustado para 9px */
+.hero .status-badge .status-dot,
+header + .status-badge .status-dot,
+.hero-content .status-badge .status-dot {
+    position: relative !important;
+    width: 9px !important;
+    height: 9px !important;
+    background-color: #0284c7 !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin-left: 2px !important;
+}
+
+/* Onda mantendo o alinhamento central */
+.hero .status-badge .status-dot::before,
+header + .status-badge .status-dot::before,
+.hero-content .status-badge .status-dot::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 9px !important;
+    height: 9px !important;
+    border: 2px solid #0284c7 !important;
+    border-radius: 50% !important;
+    animation: radar-wave-long 2.2s infinite cubic-bezier(0.1, 0.5, 0.3, 1) !important;
+}
+
+@keyframes radar-wave-long {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        border-color: rgba(2, 132, 199, 0.9);
+    }
+    100% {
+        transform: translate(-20%, -20%) scale(2);
+        opacity: 0;
+        border-color: rgba(2, 132, 199, 0);
+    }
+}
+
+.status-badge {
+    animation: pílula-radar 2s infinite;
+}
+
+/* ==========================================
+   JANELA MODAL / POP-UP
+   ========================================== */
+.modal, 
+.modal-overlay,
+#project-modal,
+.modal-content,
+.modal-box {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.modal.active,
+.modal-overlay.is-visible,
+#project-modal.active,
+#project-modal.is-visible {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(2, 4, 8, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.modal.active .modal-content,
+.modal.active .modal-box,
+.modal-overlay.is-visible .modal-box,
+#project-modal.active .modal-content,
+#project-modal.active .modal-box {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: var(--modal-bg, #0d1117) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 40px !important;
+    border-radius: 16px !important;
+    width: 90% !important;
+    max-width: 600px !important;
+    position: relative !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.close,
+.close-modal,
+.close-btn {
+    position: absolute !important;
+    top: 15px !important;
+    right: 20px !important;
+    font-size: 1.8rem !important;
+    color: var(--text-color, #94a3b8) !important;
+    cursor: pointer !important;
+    font-weight: bold !important;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close-modal:hover,
+.close-btn:hover {
+    color: #38bdf8 !important;
+}
+
+.modal-content h2, 
+.modal-content h3,
+.modal-box h3 {
+    color: var(--text-heading, #f8fafc) !important;
+    margin-bottom: 15px !important;
+    font-size: 1.6rem !important;
+}
+
+.modal-content p,
+.modal-box p {
+    color: var(--text-color, #94a3b8) !important;
+    margin-bottom: 20px !important;
+    line-height: 1.6 !important;
+}
+
+.modal-techs,
+.modal-techs-txt {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-bottom: 25px !important;
+}
+
+.modal-techs span,
+.modal-techs-txt span {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #f8fafc !important;
+    font-size: 0.75rem !important;
+    padding: 5px 12px !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.modal-buttons,
+.modal-actions {
+    display: flex !important;
+    gap: 15px !important;
+}
+
+.modal-buttons a,
+.modal-actions a,
+.modal-content a, 
+.modal-content button {
+    display: inline-block !important;
+    background: #38bdf8 !important;
+    color: #020408 !important;
+    padding: 10px 24px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: background 0.3s ease !important;
+}
+
+.modal-buttons a:hover,
+.modal-actions a:hover,
+.modal-content a:hover, 
+.modal-content button:hover {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+}
+
+.modal.active:has(h3:is(:contains("Sistema para Restaurante"), :contains("Orçamento Financeiro"))) .modal-buttons a:nth-child(2),
+.modal.active:has(h3:is(:contains("Sistema para Restaurante"), :contains("Orçamento Financeiro"))) .modal-actions a:nth-child(2),
+.modal.active:has(h3:is(:contains("Sistema para Restaurante"), :contains("Orçamento Financeiro"))) .modal-content a:nth-child(2) {
+    display: none !important;
+}
+
+#modal-restaurante .btn-glass.secondary,
+#modal-ia .btn-glass.secondary {
+    display: none !important;
+}
+
+#modal-restaurante a.btn-glass.secondary,
+#modal-ia a.btn-glass.secondary,
+#modal-restaurante ~ * .btn-glass.secondary,
+#modal-ia ~ * .btn-glass.secondary {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+body.light-theme h1,
+body.light-theme .hero h1,
+.hero-content h1 {
+    color: #000000 !important;
+}
+
+body:not(.light-theme) h1,
+body.dark-theme h1 {
+    color: #ffffff !important;
+}
+
+/* ==========================================
+   SEÇÃO DO GITHUB
+   ========================================== */
+.github-stats-section {
+    padding: 80px 0;
+}
+
+.github-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.github-card, 
+.github-contribution-card {
+    background: var(--card-bg, rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08));
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.github-card:hover, 
+.github-contribution-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(2, 132, 199, 0.4);
+}
+
+.github-card img, 
+.github-contribution-card img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.github-contribution-card {
+    width: 100%;
+}
+
+.github-native-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.stat-box {
+    background: var(--card-bg, rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08));
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(2, 132, 199, 0.4);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-color, #94a3b8);
+}
+
+.stat-link-btn {
+    color: var(--text-color, #fff);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.stat-link-btn:hover {
+    color: #ffffff;
+}
+
+#github-stats .projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+@media (max-width: 1200px) {
+    #github-stats .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
 @media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
+    #github-stats .projects-grid {
+        grid-template-columns: 1fr !important;
     }
-    
-    .hero h1 {
-        font-size: 2.5rem;
+}
+
+.github-row-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin-top: 30px;
+}
+
+.github-stat-card {
+    background: var(--card-bg, #111625);
+    border: 1px solid var(--border-color, #1f293d);
+    border-radius: 12px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.github-stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-color, #0ea5e9);
+}
+
+.github-stat-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color, #f3f4f6);
+    margin-bottom: 8px;
+    font-family: inherit; /* Herda a mesma fonte principal do site */
+}
+
+.github-stat-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #9ca3af);
+    line-height: 1.4;
+    font-family: inherit; /* Herda a mesma fonte principal do site */
+}
+
+@media (max-width: 1024px) {
+    .github-row-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
-    
-    section {
-        padding: 80px 5%;
+}
+
+@media (max-width: 640px) {
+    .github-row-grid {
+        grid-template-columns: 1fr !important;
     }
+}
+
+.github-four-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+@media (max-width: 1024px) {
+    .github-four-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .github-four-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+#contato .section-title span,
+#contato .section-tag,
+section#contato > div > div > span:first-child {
+    font-size: 1.2rem !important;
+    font-weight: 800 !important;
+    display: inline-block;
+    margin-bottom: 9px;
+}
+
+body.light-theme #sobre .project-card *,
+body.light-mode #sobre .project-card *,
+body.light-theme #sobre [class*="card"] *,
+body.light-mode #sobre [class*="card"] * {
+    color: #111827 !important;
+}
+
+[data-theme="light"] #sobre .project-card *,
+[data-theme="light"] #sobre [class*="card"] * {
+    color: #111827 !important;
+}
+
+#theme-toggle,
+.theme-toggle,
+.theme-btn,
+header button {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#theme-toggle svg,
+.theme-toggle svg,
+.theme-btn svg,
+header button svg,
+#theme-toggle i,
+.theme-toggle i {
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 16px !important;
+}
+
+.contact-buttons a,
+.contact-buttons button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 14px 24px !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+    font-family: inherit !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+}
+
+.contact-buttons a:hover,
+.contact-buttons button:hover {
+    border-color: #0ea5e9 !important;
+    background: rgba(14, 165, 233, 0.05) !important;
+    box-shadow: 0 4px 16px rgba(14, 165, 233, 0.2) !important;
+    transform: translateY(-2px) !important;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 100px; /* Isso força o navegador a parar um pouco antes do topo, exibindo o título inteiro de Contato */
 }

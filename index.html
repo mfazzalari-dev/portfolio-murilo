@@ -6,58 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Murilo Fazzalari | Desenvolvedor Full Stack</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
     <header>
-        <nav>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#formacao">Formação</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
+        <div class="header-container">
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#github-stats">Estatísticas</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+        </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Buscando primeira oportunidade como Desenvolvedor
+            </div>
             <p class="hero-subtitle">
                 DESENVOLVEDOR FULL STACK EM FORMAÇÃO
             </p>
             <h1>
-                Olá, eu sou<br>
-                <span>Murilo Fazzalari.</span>
-            </h1>
+                Olá, eu sou <span style="color: var(--text-color);">Murilo Fazzalari</span>.
+            </h1>     
             <p class="hero-description">
                 Estudante de Análise e Desenvolvimento de Sistemas,
                 apaixonado por tecnologia e focado em construir
                 soluções através da programação.
             </p>
             <div class="hero-actions">
-    <a href="#projetos" class="btn-glass">
-        Ver meus projetos
-        <span class="arrow">→</span>
-    </a>
-</div>
+                <a href="#projetos" class="btn-glass">
+                    Ver meus projetos
+                    <span class="arrow">→</span>
+                </a>
+                <a href="curriculo.pdf" target="_blank" download="Murilo_Fazzalari_Curriculo.pdf" class="btn-glass">
+                    Baixar Currículo
+                    <span class="arrow">↓</span>
+                </a>
+            </div>
         </div>
     </section>
 
     <section id="sobre" class="about">
         <div class="section-title">
-            <p>01 — Sobre mim</p>
+            <span>01 — Sobre mim</span>
             <h2>Construindo minha jornada <span>na tecnologia.</span></h2>
         </div>
-        
+       
         <div class="about-grid">
             <div class="about-text">
                 <p>Sou estudante de Análise e Desenvolvimento de Sistemas e estou construindo minha trajetória na área de tecnologia.</p>
                 <p>Meu foco é me desenvolver como <strong>Desenvolvedor Full Stack</strong>, aprimorando meus conhecimentos em programação, desenvolvimento web, APIs e banco de dados.</p>
-
             </div>
-            
+           
             <div class="about-stats">
                 <div class="stat-card">
                     <div class="stat-number">ADS</div>
@@ -89,7 +103,6 @@
         </div>
 
         <div class="skills-grid">
-            <!-- BACKEND -->
             <div class="skill-card">
                 <span class="skill-number">01</span>
                 <h3>Backend</h3>
@@ -104,7 +117,6 @@
                 </div>
             </div>
 
-            <!-- FRONTEND -->
             <div class="skill-card">
                 <span class="skill-number">02</span>
                 <h3>Frontend</h3>
@@ -120,7 +132,6 @@
                 </div>
             </div>
 
-            <!-- CONCEITOS -->
             <div class="skill-card">
                 <span class="skill-number">03</span>
                 <h3>Boas práticas</h3>
@@ -135,7 +146,6 @@
                 </div>
             </div>
 
-            <!-- FERRAMENTAS -->
             <div class="skill-card">
                 <span class="skill-number">04</span>
                 <h3>Ferramentas</h3>
@@ -165,7 +175,6 @@
         </div>
 
         <div class="education-list">
-            <!-- SENAI -->
             <article class="education-card">
                 <div class="education-number">01</div>
                 <div class="education-content">
@@ -186,36 +195,17 @@
                         <span>Lógica de Programação</span>
                         <span>Programação</span>
                     </div>
+                    <div style="margin-top: 15px;">
+                        <a href="Python.pdf" target="_blank" class="btn-glass" style="font-size: 0.85rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px;">
+    Ver Certificado ↗
+</a>
+                    </div>
                 </div>
             </article>
 
-            <!-- SENAI IA -->
+        
             <article class="education-card">
                 <div class="education-number">02</div>
-                <div class="education-content">
-                    <div class="education-header">
-                        <div>
-                            <span class="education-institution">SENAI</span>
-                            <h3>Fundamentos de Inteligência Artificial e Análise de Dados</h3>
-                        </div>
-                        <span class="education-status">Concluído</span>
-                    </div>
-                    <p>
-                        Formação introdutória em fundamentos de inteligência
-                        artificial e análise de dados, ampliando conhecimentos
-                        sobre tecnologia e utilização de dados.
-                    </p>
-                    <div class="education-tags">
-                        <span>Inteligência Artificial</span>
-                        <span>Análise de Dados</span>
-                        <span>Dados</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- SANTANDER -->
-            <article class="education-card">
-                <div class="education-number">03</div>
                 <div class="education-content">
                     <div class="education-header">
                         <div>
@@ -237,12 +227,16 @@
                         <span>Clean Code</span>
                         <span>Design Patterns</span>
                     </div>
+                    <div style="margin-top: 15px;">
+                        <a href="Santander.pdf" target="_blank" class="btn-glass" style="font-size: 0.85rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px;">
+    Ver Certificado ↗
+</a>
+                    </div>
                 </div>
             </article>
 
-            <!-- INTER -->
             <article class="education-card">
-                <div class="education-number">04</div>
+                <div class="education-number">03</div>
                 <div class="education-content">
                     <div class="education-header">
                         <div>
@@ -264,141 +258,373 @@
                         <span>Node.js</span>
                         <span>SQL Server</span>
                     </div>
+                    <div style="margin-top: 15px;">
+                        <a href="Inter.pdf" target="_blank" class="btn-glass" style="font-size: 0.85rem; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px;">
+    Ver Certificado ↗
+</a>
+                    </div>
                 </div>
             </article>
         </div>
     </section>
 
-    <section id="projetos" class="projects">
+    <section id="projetos">
         <div class="section-title">
-            <p>04 — PROJETOS</p>
-            <h2>
-                Alguns dos trabalhos que
-                <span>desenvolvi na prática.</span>
-            </h2>
+            <span>04 — PROJETOS</span>
+            <h2>Alguns dos trabalhos que desenvolvi na prática.</h2>
         </div>
 
         <div class="projects-grid">
-            <!-- PROJETO 1: PORTFÓLIO -->
-            <article class="project-card">
+            <div class="project-card">
                 <div class="project-header">
                     <span class="project-tag">Destaque</span>
-                    <div class="project-links">
-                        <a href="#" target="_blank" title="Código Fonte">GitHub</a>
-                    </div>
                 </div>
-                <h3>Portfólio Pessoal</h3>
-                <p>
-                    Site de portfólio moderno e responsivo desenvolvido para apresentar 
-                    minha trajetória, habilidades, formações e projetos de forma profissional.
-                </p>
+                <div>
+                    <h3>Portfólio Pessoal</h3>
+                    <p>Site de portfólio moderno e responsivo desenvolvido para apresentar minha trajetória, habilidades, formações e projetos de forma profissional.</p>
+                </div>
                 <div class="project-techs">
                     <span>HTML5</span>
                     <span>CSS3</span>
                     <span>JavaScript</span>
                 </div>
-            </article>
+            </div>
 
-            <!-- PROJETO 2: CLONE NETFLIX -->
-            <article class="project-card">
+            <div class="project-card">
                 <div class="project-header">
                     <span class="project-tag">Frontend</span>
-                    <div class="project-links">
-                        <a href="https://github.com/mfazzalari/clone-netflix" target="_blank" title="Repositório">GitHub</a>
-                    </div>
                 </div>
-                <h3>Clone Netflix</h3>
-                <p>
-                    Desenvolvimento de uma interface inspirada na plataforma de streaming 
-                    Netflix, focando na recriação de layouts dinâmicos e experiência visual.
-                </p>
+                <div>
+                    <h3>Clone Netflix</h3>
+                    <p>Desenvolvimento de interface inspirada na plataforma de streaming Netflix, aplicando conceitos avançados de estruturação de layout e dinamismo visual com CSS e JavaScript.</p>
+                </div>
                 <div class="project-techs">
                     <span>HTML</span>
                     <span>CSS</span>
                     <span>JavaScript</span>
                 </div>
-            </article>
+            </div>
 
-            <!-- PROJETO 3: SISTEMA RESTAURANTE -->
-            <article class="project-card">
+            <div class="project-card">
                 <div class="project-header">
                     <span class="project-tag">Fullstack / Sistema</span>
-                    <div class="project-links">
-                        <a href="https://github.com/mfazzalari/sistema-restaurante" target="_blank" title="Repositório">GitHub</a>
-                    </div>
                 </div>
-                <h3>Sistema para Restaurante</h3>
-                <p>
-                    Aplicação voltada para o gerenciamento de pedidos e organização 
-                    de operações em ambiente de restaurante.
-                </p>
+                <div>
+                    <h3>Sistema para Restaurante</h3>
+                    <p>Aplicação voltada para o gerenciamento de pedidos e estruturação lógica de operações em ambiente de restaurante.</p>
+                </div>
                 <div class="project-techs">
                     <span>Desenvolvimento Web</span>
                     <span>Lógica</span>
                 </div>
-            </article>
+            </div>
 
-            <!-- PROJETO 4: ORÇAMENTO FINANCEIRO IA -->
-            <article class="project-card">
+            <div class="project-card">
                 <div class="project-header">
                     <span class="project-tag">Tecnologia & Dados</span>
-                    <div class="project-links">
-                        <a href="https://github.com/mfazzalari/orcamento-financeiro-ia" target="_blank" title="Repositório">GitHub</a>
-                    </div>
                 </div>
-                <h3>Orçamento Financeiro com IA</h3>
-                <p>
-                    Projeto integrando conceitos de análise e inteligência artificial 
-                    aplicados ao controle e planejamento de orçamentos financeiros.
-                </p>
+                <div>
+                    <h3>Orçamento Financeiro</h3>
+                    <p>Projeto integrando conceitos de análise e inteligência artificial aplicados ao controle e planejamento de orçamentos financeiros.</p>
+                </div>
                 <div class="project-techs">
                     <span>Python</span>
                     <span>Inteligência Artificial</span>
                 </div>
-            </article>
-        </div>
-    </section>
-
-    <section id="contato">
-        <div class="section-title">
-            <p>05 — CONTATO</p>
-            <h2>Vamos construir algo incrível juntos?</h2>
-        </div>
-
-        <div class="contact-content">
-            <p>Estou em busca de oportunidades como desenvolvedor (estágio ou júnior) para somar em projetos desafiadores. Sinta-se à vontade para entrar em contato através das minhas redes ou me enviar uma mensagem direta.</p>
-            
-            <div class="contact-buttons">
-                <a href="mailto:murilogpfazzalari@gmail.com" class="btn-glass primary">Enviar um E-mail</a>
-                <a href="https://linkedin.com" target="_blank" class="btn-glass">LinkedIn</a>
-                <a href="https://github.com" target="_blank" class="btn-glass">GitHub</a>
             </div>
         </div>
     </section>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section");
 
-        // Deixa a primeira seção visível imediatamente ao carregar
-        if (sections.length > 0) {
-            sections[0].classList.add("visible");
+    <div class="modal-overlay" id="meu-modal">
+        <div class="modal-box">
+            <span class="close-btn">&times;</span>
+            <h3 class="modal-title-txt">Título do Projeto</h3>
+            <p class="modal-desc-txt">Descrição do projeto...</p>
+            <div class="modal-techs-txt"></div>
+            <div class="modal-actions">
+                <a href="#" class="link-github btn-glass primary" target="_blank">Repositório GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="github-stats" class="projects-section">
+        <div class="container">
+            <div class="section-title">
+                <span>05 — ESTATÍSTICAS</span>
+                <h2>Atividade no GitHub</h2>
+            </div>
+
+            <div class="github-four-grid">
+                <div class="github-stat-card">
+                    <div>
+                        <h3>6 Repositórios</h3>
+                        <p>Repositórios públicos criados e mantidos no GitHub.</p>
+                    </div>
+                </div>
+
+                <div class="github-stat-card">
+                    <div>
+                        <h3>Full-Stack & IA</h3>
+                        <p>Foco principal em Java, Python, JavaScript e React.</p>
+                    </div>
+                </div>
+
+                <div class="github-stat-card">
+                    <div>
+                        <h3>Frequência Diária</h3>
+                        <p>Constância em commits e evolução contínua de código.</p>
+                    </div>
+                </div>
+
+                <a href="https://github.com/mfazzalari" target="_blank" class="github-stat-card github-link-card">
+                    <div>
+                        <h3>Ver Perfil Completo ↗</h3>
+                        <p>Acesse minha página oficial no GitHub para ver todos os códigos.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="projects-section">
+        <div class="container">
+            <div class="section-title">
+                <span>06 — CONTATO</span>
+                <h2>Vamos construir algo incrível juntos?</h2>
+            </div>
+
+            <p style="margin-top: 16px; margin-bottom: 30px; color: var(--text-muted, #9ca3af); font-size: 1rem; line-height: 1.5;">
+                Estou em busca de oportunidades como desenvolvedor (estágio ou júnior) para somar em projetos desafiadores. Sinta-se à vontade para entrar em contato através das minhas redes.
+            </p>
+
+            <div class="github-four-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                
+                <div class="github-stat-card" id="btn-copiar" onclick="copiarEmail()" style="cursor: pointer;">
+                    <div>
+                        <h3>Copiar E-mail</h3>
+                        <p>Clique para copiar meu endereço de e-mail profissional.</p>
+                    </div>
+                </div>
+
+                <a href="https://www.linkedin.com/in/murilo-fazzalari/" target="_blank" class="github-stat-card github-link-card">
+                    <div>
+                        <h3>LinkedIn ↗</h3>
+                        <p>Conecte-se comigo profissionalmente na rede.</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/mfazzalari" target="_blank" class="github-stat-card github-link-card">
+                    <div>
+                        <h3>GitHub ↗</h3>
+                        <p>Acompanhe meus repositórios e códigos por lá.</p>
+                    </div>
+                </a>
+
+                <a href="curriculo.pdf" target="_blank" download="Murilo_Fazzalari_Curriculo.pdf" class="github-stat-card github-link-card">
+                    <div>
+                        <h3>Baixar Currículo ↗</h3>
+                        <p>Faça o download do meu currículo em PDF.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. Animação de aparição das seções no scroll
+            const sections = document.querySelectorAll("section");
+            function checkScroll() {
+                const triggerBottom = window.innerHeight * 0.85;
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < triggerBottom && rect.bottom > 0) {
+                        section.classList.add("visible");
+                    } else {
+                        section.classList.remove("visible");
+                    }
+                });
+            }
+            window.addEventListener("scroll", checkScroll);
+            checkScroll();
+
+            // 2. Modal de Projetos
+            const cards = document.querySelectorAll(".project-card");
+            const modal = document.getElementById("meu-modal");
+            
+            if (modal) {
+                const closeBtn = modal.querySelector(".close-btn");
+                const titleEl = modal.querySelector(".modal-title-txt");
+                const descEl = modal.querySelector(".modal-desc-txt");
+                const techsEl = modal.querySelector(".modal-techs-txt");
+                const btnGithub = modal.querySelector(".link-github");
+
+                cards.forEach(card => {
+                    card.addEventListener("click", () => {
+                        const cardTitle = card.querySelector("h3") ? card.querySelector("h3").innerText : "";
+                        const cardDesc = card.querySelector("p") ? card.querySelector("p").innerText : "";
+                        const cardTechs = card.querySelector(".project-techs") ? card.querySelector(".project-techs").innerHTML : "";
+
+                        titleEl.innerText = cardTitle;
+                        descEl.innerText = cardDesc;
+                        techsEl.innerHTML = cardTechs;
+
+                        if (cardTitle.includes("Netflix")) {
+                            btnGithub.href = "https://github.com/mfazzalari/clone-netflix";
+                        } else if (cardTitle.includes("Portfólio")) {
+                            btnGithub.href = "https://github.com/mfazzalari/portfolio";
+                        } else if (cardTitle.includes("Restaurante")) {
+                            btnGithub.href = "https://github.com/mfazzalari/sistema-restaurante";
+                        } else if (cardTitle.includes("Orçamento")) {
+                            btnGithub.href = "https://github.com/mfazzalari/orcamento-financeiro-ia";
+                        }
+
+                        modal.classList.add("is-visible");
+                        document.body.style.overflow = "hidden";
+                    });
+                });
+
+                closeBtn.addEventListener("click", () => {
+                    modal.classList.remove("is-visible");
+                    document.body.style.overflow = "auto";
+                });
+
+                window.addEventListener("click", (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove("is-visible");
+                        document.body.style.overflow = "auto";
+                    }
+                });
+            }
+
+            // 3. Menu de navegação suave (Scroll com correção para o Header Fixo e Contato)
+            const menuLinks = document.querySelectorAll("header nav ul li a");
+            const sectionsList = document.querySelectorAll("section");
+
+            menuLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    const targetId = this.getAttribute("href");
+                    
+                    if (targetId && targetId.startsWith("#")) {
+                        e.preventDefault();
+                        const targetSection = document.querySelector(targetId);
+                        
+                        if (targetSection) {
+                            if (targetId === "#contato") {
+                                window.scrollTo({
+                                    top: document.body.scrollHeight,
+                                    behavior: "smooth"
+                                });
+                            } else {
+                                const headerHeight = document.querySelector("header").offsetHeight || 80;
+                                const elementPosition = targetSection.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+                                window.scrollTo({
+                                    top: offsetPosition,
+                                    behavior: "smooth"
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+
+            // 4. Destacar item ativo no menu ao rolar a página (Com correção para o Contato)
+            window.addEventListener('scroll', () => {
+                let current = '';
+               
+                sectionsList.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                // Se chegou no final absoluto da página, força a ativar o contato
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20) {
+                    current = 'contato';
+                }
+
+                menuLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+           
+            let progressBar = document.getElementById('scroll-progress');
+            if (!progressBar) {
+                progressBar = document.createElement('div');
+                progressBar.id = 'scroll-progress';
+                document.body.appendChild(progressBar);
+            }
+            progressBar.style.width = scrolled + '%';
+        });
+    </script>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-theme');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, {
-            threshold: 0.1
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+           
+            if (body.classList.contains('light-theme')) {
+                localStorage.setItem('portfolio-theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('portfolio-theme', 'dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
         });
+    </script>
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    });
-</script>
+    <script>
+        function copiarEmail() {
+            const email = "murilogpfazzalari@gmail.com";
+            const botao = document.getElementById("btn-copiar");
+            const tituloCard = botao.querySelector("h3");
+            const descCard = botao.querySelector("p");
+
+            navigator.clipboard.writeText(email).then(() => {
+                const originalTitulo = tituloCard.textContent;
+                const originalDesc = descCard.textContent;
+
+                tituloCard.textContent = "E-mail copiado! ✓";
+                descCard.textContent = email;
+
+                setTimeout(() => {
+                    tituloCard.textContent = originalTitulo;
+                    descCard.textContent = originalDesc;
+                }, 3000);
+            }).catch(err => {
+                console.error("Erro ao copiar o e-mail: ", err);
+            });
+        }
+    </script>
+
 </body>
 
 </html>
