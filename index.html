@@ -11,24 +11,32 @@
 
 <body>
 
-    <header>
-        <div class="header-container">
-            <nav>
-                <ul>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#habilidades">Habilidades</a></li>
-                    <li><a href="#formacao">Formação</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#github-stats">Estatísticas</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
-            
+   <header>
+    <div class="header-container">
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#github-stats">Estatísticas</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Grupo contendo os dois botões lado a lado -->
+        <div class="header-actions-right">
             <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
                 <i class="fas fa-moon" id="theme-icon"></i>
             </button>
+
+            <button id="lang-toggle" class="theme-toggle-btn" aria-label="Traduzir Página" title="Mudar para Inglês">
+                <i class="fas fa-globe" id="lang-icon"></i>
+                <span id="lang-text" style="font-size: 0.75rem; font-weight: bold; margin-left: 4px;">EN</span>
+            </button>
         </div>
-    </header>
+    </div>
+</header>
 
     <section class="hero">
         <div class="hero-content">
@@ -624,6 +632,134 @@
             });
         }
     </script>
+    <script>
+    // Dicionário de tradução (Português -> Inglês e vice-versa)
+    const translations = {
+        // Menu
+        "Sobre": "About",
+        "Habilidades": "Skills",
+        "Formação": "Education",
+        "Projetos": "Projects",
+        "Estatísticas": "Stats",
+        "Contato": "Contact",
+
+        // Hero Section
+        "Buscando primeira oportunidade como Desenvolvedor": "Looking for first opportunity as a Developer",
+        "DESENVOLVEDOR FULL STACK EM FORMAÇÃO": "FULL STACK DEVELOPER IN TRAINING",
+        "Olá, eu sou": "Hello, I am",
+        "Estudante de Análise e Desenvolvimento de Sistemas, apaixonado por tecnologia e focado em construir soluções através da programação.": "Systems Analysis and Development student, passionate about technology and focused on building solutions through programming.",
+        "Ver meus projetos": "View my projects",
+        "Baixar Currículo": "Download Resume",
+
+        // Seção Sobre
+        "01 — Sobre mim": "01 — About me",
+        "Construindo minha jornada na tecnologia.": "Building my journey in technology.",
+        "Sou estudante de Análise e Desenvolvimento de Sistemas e estou construindo minha trajetória na área de tecnologia.": "I am a Systems Analysis and Development student building my career in technology.",
+        "Meu foco é me desenvolver como": "My focus is to develop as a",
+        "aprimorando meus conhecimentos em programação, desenvolvimento web, APIs e banco de dados.": "improving my knowledge in programming, web development, APIs, and databases.",
+        "FORMAÇÃO ATUAL": "CURRENT EDUCATION",
+        "ÁREA DE FOCO": "FOCUS AREA",
+        "BACKEND": "BACKEND",
+        "FRONTEND": "FRONTEND",
+
+        // Habilidades
+        "02 — HABILIDADES": "02 — SKILLS",
+        "Tecnologias e conceitos que estou desenvolvendo.": "Technologies and concepts I am developing.",
+        "Desenvolvimento de aplicações backend utilizando Java e o ecossistema Spring.": "Backend application development using Java and the Spring ecosystem.",
+        "Desenvolvimento de interfaces web modernas utilizando tecnologias fundamentais do frontend.": "Modern web interface development using fundamental frontend technologies.",
+        "Conhecimentos adquiridos durante minha formação em desenvolvimento de software.": "Knowledge acquired during my software development education.",
+        "Ferramentas utilizadas durante meus estudos e desenvolvimento dos projetos.": "Tools used during my studies and project development.",
+
+        // Formação
+        "03 — FORMAÇÃO COMPLEMENTAR": "03 — COMPLEMENTARY EDUCATION",
+        "Conhecimento construído na prática.": "Knowledge built in practice.",
+        "Programação em Python": "Python Programming",
+        "Concluído": "Completed",
+        "Formação em programação utilizando Python, desenvolvendo fundamentos de lógica de programação, estruturas de dados e construção de soluções.": "Programming education using Python, developing programming logic fundamentals, data structures, and solution building.",
+        "Ver Certificado ↗": "View Certificate ↗",
+        "Fundamentos de Inteligência Artificial e Análise de Dados": "Artificial Intelligence and Data Analysis Fundamentals",
+        "Formação introdutória em fundamentos de inteligência artificial e análise de dados, ampliando conhecimentos sobre tecnologia e utilização de dados.": "Introductory education in artificial intelligence and data analysis fundamentals, expanding knowledge on technology and data usage.",
+        "AI Java Back-end": "AI Java Back-end",
+        "Formação prática voltada ao desenvolvimento back-end com Java, explorando APIs, arquitetura de software e boas práticas de desenvolvimento.": "Practical training focused on Java back-end development, exploring APIs, software architecture, and development best practices.",
+        "FrontEnd Developer": "FrontEnd Developer",
+        "Formação prática em desenvolvimento front-end, trabalhando com construção de interfaces e tecnologias utilizadas no desenvolvimento web.": "Practical training in front-end development, working with interface building and technologies used in web development.",
+
+        // Projetos
+        "04 — PROJETOS": "04 — PROJECTS",
+        "Alguns dos trabalhos que desenvolvi na prática.": "Some of the works I developed in practice.",
+        "Destaque": "Highlight",
+        "Portfólio Pessoal": "Personal Portfolio",
+        "Site de portfólio moderno e responsivo desenvolvido para apresentar minha trajetória, habilidades, formações e projetos de forma profissional.": "Modern and responsive portfolio website developed to present my journey, skills, education, and projects professionally.",
+        "Clone Netflix": "Netflix Clone",
+        "Desenvolvimento de interface inspirada na plataforma de streaming Netflix, aplicando conceitos avançados de estruturação de layout e dinamismo visual com CSS e JavaScript.": "Interface development inspired by the Netflix streaming platform, applying advanced layout structuring concepts and visual dynamism with CSS and JavaScript.",
+        "Fullstack / Sistema": "Fullstack / System",
+        "Sistema para Restaurante": "Restaurant System",
+        "Aplicação voltada para o gerenciamento de pedidos e estruturação lógica de operações em ambiente de restaurante.": "Application aimed at order management and logical structuring of restaurant environment operations.",
+        "Tecnologia & Dados": "Technology & Data",
+        "Orçamento Financeiro": "Financial Budget",
+        "Projeto integrando conceitos de análise e inteligência artificial aplicados ao controle e planejamento de orçamentos financeiros.": "Project integrating analysis and artificial intelligence concepts applied to financial budget control and planning.",
+        "Repositório GitHub": "GitHub Repository",
+
+        // Estatísticas
+        "05 — ESTATÍSTICAS": "05 — STATISTICS",
+        "Atividade no GitHub": "GitHub Activity",
+        "Repositórios públicos criados e mantidos no GitHub.": "Public repositories created and maintained on GitHub.",
+        "Foco principal em Java, Python, JavaScript e React.": "Main focus on Java, Python, JavaScript, and React.",
+        "Constância em commits e evolução contínua de código.": "Commit consistency and continuous code evolution.",
+        "Ver Perfil Completo ↗": "View Full Profile ↗",
+        "Acesse minha página oficial no GitHub para ver todos os códigos.": "Access my official GitHub page to see all codes.",
+
+        // Contato
+        "06 — CONTATO": "06 — CONTACT",
+        "Vamos construir algo incrível juntos?": "Let's build something amazing together?",
+        "Estou em busca de oportunidades como desenvolvedor (estágio ou júnior) para somar em projetos desafiadores. Sinta-se à vontade para entrar em contato através das minhas redes.": "I am looking for opportunities as a developer (internship or junior) to add value to challenging projects. Feel free to get in touch through my networks.",
+        "Copiar E-mail": "Copy Email",
+        "Clique para copiar meu endereço de e-mail profissional.": "Click to copy my professional email address.",
+        "LinkedIn ↗": "LinkedIn ↗",
+        "Conecte-se comigo profissionalmente na rede.": "Connect with me professionally on the network.",
+        "GitHub ↗": "GitHub ↗",
+        "Acompanhe meus repositórios e códigos por lá.": "Follow my repositories and codes there.",
+        "Faça o download do meu currículo em PDF.": "Download my resume in PDF."
+    };
+
+    let currentLang = 'pt';
+    const langToggleBtn = document.getElementById('lang-toggle');
+    const langText = document.getElementById('lang-text');
+
+function walkTextNodes(node, translateFunc) {
+    // IMPORTANTE: Se o elemento for um link (<a>), o script o ignora completamente
+    if (node.nodeName === 'A') return; 
+
+    if (node.nodeType === Node.TEXT_NODE) {
+        let text = node.nodeValue.trim();
+        if (text.length > 0) {
+            node.nodeValue = translateFunc(node.nodeValue);
+        }
+    } else {
+        if (node.nodeName !== 'SCRIPT' && node.nodeName !== 'STYLE') {
+            for (let child of node.childNodes) {
+                walkTextNodes(child, translateFunc);
+            }
+        }
+    }
+}
+
+    langToggleBtn.addEventListener('click', () => {
+        if (currentLang === 'pt') {
+            // Traduzir para Inglês
+            walkTextNodes(document.body, (text) => {
+                let trimmed = text.trim();
+                return translations[trimmed] ? text.replace(trimmed, translations[trimmed]) : text;
+            });
+            currentLang = 'en';
+            langText.textContent = 'PT';
+            langToggleBtn.title = 'Mudar para Português';
+        } else {
+            // Recarrega a página para voltar ao Português original perfeitamente
+            location.reload();
+        }
+    });
+</script>
 
 </body>
 
