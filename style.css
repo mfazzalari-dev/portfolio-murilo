@@ -1191,109 +1191,66 @@ section {
     scroll-margin-top: 100px; /* Isso força o navegador a parar um pouco antes do topo, exibindo o título inteiro de Contato */
 }
 /* =========================================
-   RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS
+   AJUSTES FINOS DE RESPONSIVIDADE PARA MOBILE (iPhone, etc.)
    ========================================= */
-
-/* Tablets e telas intermediárias (abaixo de 1024px) */
-@media (max-width: 1024px) {
-    .about-grid,
-    .skills-grid,
-    .github-four-grid,
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
 
 /* Celulares (abaixo de 768px) */
 @media (max-width: 768px) {
     
-    /* 1. Ajuste do Cabeçalho e Menu */
-    header {
+    /* 1. Contêiner Principal do Header */
+    .header-container {
+        display: flex;
+        flex-direction: row !important; /* Força ficar sempre em linha */
+        justify-content: space-between !important; /* Menu esquerda, botões direita */
+        align-items: center;
         padding: 10px 15px;
+        width: 100%;
     }
 
-    .header-container {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
+    /* 2. Ajuste do Menu de Navegação */
+    header nav {
+        flex: 1; /* Ocupa o espaço à esquerda */
+        display: flex;
+        justify-content: flex-start; /* Alinha os itens à esquerda */
     }
 
     header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 15px;
+        flex-wrap: nowrap; /* Impede que os itens do menu quebrem de linha */
+        gap: 12px; /* Espaçamento menor entre os itens */
         padding: 0;
+        margin: 0;
+        overflow-x: auto; /* Se for muito longo, permite rolar pro lado */
+        padding-bottom: 5px; /* Respiro se tiver scrollbar */
     }
 
     header nav ul li a {
-        font-size: 0.9rem;
+        font-size: 0.8rem; /* Fonte ligeiramente menor para caber */
     }
 
-    /* 2. Seção Hero (Apresentação Principal) */
-    .hero {
-        padding: 40px 20px;
-        text-align: center;
+    /* 3. Ajuste do Grupo de Botões (Tema + Tradução) */
+    .header-actions-right {
+        display: flex !important;
+        align-items: center;
+        gap: 8px !important; /* Espaçamento menor entre os botões */
+        margin-left: 10px !important; /* Garante um distanciamento mínimo do menu */
     }
 
-    .hero h1 {
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    .hero-description {
-        font-size: 0.95rem;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-    }
-
-    .hero-actions a {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-    }
-
-    /* 3. Transformar todas as grids em coluna única (1 por linha) */
-    .about-grid,
-    .skills-grid,
-    .github-four-grid,
-    .projects-grid {
-        grid-template-columns: 1fr !important;
-        gap: 15px;
-    }
-
-    /* 4. Ajustes gerais de espaçamento das seções */
-    section {
-        padding: 50px 15px !important;
-    }
-
-    .section-title h2 {
-        font-size: 1.5rem;
-    }
-
-    /* 5. Ajustes específicos para os cards de formação e contato */
-    .education-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
+    /* Ajuste do ícone de globo (idioma) */
+    #lang-text {
+        font-size: 0.7rem !important;
     }
 }
 
-/* Celulares muito pequenos (abaixo de 480px) */
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.75rem;
-    }
-
+/* Para telas muito pequenas (abaixo de 375px - telas antigas de iPhone SE) */
+@media (max-width: 375px) {
     header nav ul {
-        gap: 8px 10px;
+        gap: 8px;
     }
-
     header nav ul li a {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+    }
+    .theme-toggle-btn {
+        padding: 6px; /* Botões um pouco menores */
     }
 }
 /* Esconde a barra superior que o Google Tradutor coloca por padrão */
