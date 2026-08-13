@@ -40,4 +40,4 @@ Este projeto foi construído utilizando as seguintes tecnologias:
 
 * **LinkedIn:** [Murilo Fazzalari](https://www.linkedin.com/in/murilo-fazzalari/)
 * **E-mail:** murilogpfazzalari@gmail.com
-* **GitHub:** [@mfazzalari](https://github.com/mfazzalari)
+* **GitHub:** [mfazzalari-dev](https://github.com/mfazzalari-dev)
