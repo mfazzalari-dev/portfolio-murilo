@@ -2,8 +2,7 @@
 
 Portfólio profissional desenvolvido para apresentar minha trajetória como **Desenvolvedor Full Stack**, destacando minhas habilidades, formações, projetos práticos e estatísticas de desenvolvimento.
 
-🔗 **Acesse o site ao vivo:** [https://portfolio-murilo-a8kn0awf5-murilogpfazzalari-8549s-projects.vercel.app](https://portfolio-murilo-a8kn0awf5-murilogpfazzalari-8549s-projects.vercel.app)
-
+🔗 **Acesse o site ao vivo:** https://mfazzalari-dev.github.io/portfolio-murilo/
 ---
 
 ## 🛠️ Tecnologias Utilizadas
