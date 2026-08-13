@@ -265,7 +265,7 @@
     <section id="projetos">
         <div class="section-title">
             <span data-translate="proj-tag">04 — PROJETOS</span>
-            <h2 data-translate="proj-title">Alguns dos trabalhos que desenvolvi na prática.</h2>
+           <h2 data-translate="proj-title">Alguns dos trabalhos que desenvolvi <span>na prática.</span></h2>
         </div>
 
         <div class="projects-grid">
@@ -345,8 +345,8 @@
         <div class="container">
             <div class="section-title">
                 <span data-translate="stats-tag">05 — ESTATÍSTICAS</span>
-                <h2 data-translate="stats-title">Atividade no GitHub</h2>
-            </div>
+                <h2 data-translate="stats-title">Atividade no <span> GitHub</span>
+</h2>
 
             <div class="github-four-grid">
                 <div class="github-stat-card">
@@ -370,7 +370,7 @@
                     </div>
                 </div>
 
-                <a href="https://github.com/mfazzalari" target="_blank" class="github-stat-card github-link-card">
+                <a href="https://github.com/mfazzalari-dev" target="_blank" class="github-stat-card github-link-card">
                     <div>
                         <h3 data-translate="stat-box-4-h">Ver Perfil Completo ↗</h3>
                         <p data-translate="stat-box-4-p">Acesse minha página oficial no GitHub para ver todos os códigos.</p>
@@ -384,7 +384,7 @@
         <div class="container">
             <div class="section-title">
                 <span data-translate="contact-tag">06 — CONTATO</span>
-                <h2 data-translate="contact-title">Vamos construir algo incrível juntos?</h2>
+                <h2 data-translate="contact-title">Vamos construir algo incrível </span> juntos?</span></h2>
             </div>
 
             <p style="margin-top: 16px; margin-bottom: 30px; color: var(--text-muted, #9ca3af); font-size: 1rem; line-height: 1.5;" data-translate="contact-desc">
@@ -407,7 +407,7 @@
                     </div>
                 </a>
 
-                <a href="https://github.com/mfazzalari" target="_blank" class="github-stat-card github-link-card">
+                <a href="https://github.com/mfazzalari-dev" target="_blank" class="github-stat-card github-link-card">
                     <div>
                         <h3 data-translate="contact-card-3-h">GitHub ↗</h3>
                         <p data-translate="contact-card-3-p">Acompanhe meus repositórios e códigos por lá.</p>
@@ -463,15 +463,15 @@
                         descEl.innerText = cardDesc;
                         techsEl.innerHTML = cardTechs;
 
-                        if (cardTitle.includes("Netflix") || cardTitle.includes("Clone")) {
-                            btnGithub.href = "https://github.com/mfazzalari/clone-netflix";
-                        } else if (cardTitle.includes("Portfólio")) {
-                            btnGithub.href = "https://github.com/mfazzalari/portfolio-murilo";
-                        } else if (cardTitle.includes("Restaurante")) {
-                            btnGithub.href = "https://github.com/mfazzalari/sistema-restaurante";
-                        } else if (cardTitle.includes("Orçamento")) {
-                            btnGithub.href = "https://github.com/mfazzalari/orcamento-financeiro-ia";
-                        }
+                        if (cardTitle.includes("Netflix")) {
+            btnGithub.href = "https://github.com/mfazzalari-dev/clone-netflix";
+        } else if (cardTitle.includes("Portfólio")) {
+            btnGithub.href = "https://github.com/mfazzalari-dev/portfolio-murilo";
+        } else if (cardTitle.includes("Restaurante")) {
+            btnGithub.href = "https://github.com/mfazzalari-dev/sistema-restaurante";
+        } else if (cardTitle.includes("Orçamento")) {
+            btnGithub.href = "https://github.com/mfazzalari-dev/orcamento-financeiro-ia";
+        }
 
                         modal.classList.add("is-visible");
                         document.body.style.overflow = "hidden";
@@ -678,7 +678,7 @@
 
             // Projetos
             "proj-tag": "04 — PROJECTS",
-            "proj-title": "Some of the works I developed in practice.",
+            "proj-title": "Some of the works I developed <span>in practice.</span>",
             "p-tag-1": "Highlight",
             "p-h3-1": "Personal Portfolio",
             "p-desc-1": "Modern and responsive portfolio website developed to present my journey, skills, education, and projects professionally.",
@@ -702,7 +702,7 @@
 
             // Estatísticas
             "stats-tag": "05 — STATISTICS",
-            "stats-title": "GitHub Activity",
+            "stats-title": "GitHub <span>Activity</span>",
             "stat-box-1-h": "6 Repositories",
             "stat-box-1-p": "Public repositories created and maintained on GitHub.",
             "stat-box-2-h": "Full-Stack & IA",

@@ -1300,3 +1300,8 @@ nav {
     gap: 15px;
     margin-left: auto; /* O segredo: joga tudo que estiver dentro desta div para a direita */
 }
+/* Altera a cor do seu nome na seção Hero e do destaque na seção Sobre */
+.hero-content h1 span,
+.section-title h2 span {
+    color: #0b3591; /* Substitua pelo código da cor exata que você deseja */
+}
