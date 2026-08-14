@@ -1733,3 +1733,56 @@ header nav ul li a.active {
     height: 100% !important;
     margin: 0 !important;
 }
+/* Força o botão de idioma a ter exatamente as mesmas dimensões e formato do botão de tema */
+#google_translate_element,
+.goog-te-gadget,
+.language-selector,
+button.lang-btn,
+div.lang-wrapper {
+    width: auto !important;
+}
+
+/* Remove o ícone de globo/bolinha gerado pelo Google Translate ou HTML interno */
+.goog-te-gadget img, 
+.goog-te-gadget .goog-te-combo ~ img,
+#google_translate_element img,
+.lang-btn i,
+.lang-btn svg {
+    display: none !important;
+}
+
+/* Padroniza o container do seletor de idioma para ficar idêntico ao botão da lua */
+header .header-actions-right *:has(#google_translate_element),
+.lang-toggle-btn {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    border-radius: 10px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Ajusta o select interno para ocupar o espaço sem criar elementos visuais indesejados */
+.goog-te-combo {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-heading) !important;
+    outline: none !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    text-align: center !important;
+}
+
+.goog-te-combo option {
+    background-color: var(--modal-bg, #0d1117) !important;
+    color: var(--text-heading) !important;
+}
