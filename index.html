@@ -19,13 +19,14 @@
         </button>
 
         <!-- 2. Centro: Menu de Navegação (Gaveta centralizada) -->
+      <!-- 2. Centro: Menu de Navegação (Gaveta centralizada) -->
         <nav id="nav-menu">
             <ul>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#skills">Habilidades</a></li>
-                <li><a href="#education">Formação</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#stats">Estatísticas</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#github-stats">Estatísticas</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
@@ -779,5 +780,72 @@
             });
         }
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Seleciona todos os links de navegação
+        const links = document.querySelectorAll('nav a, .nav-menu a, .menu-toggle-btn ~ nav a');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+
+                // Verifica se é um link de âncora (começa com #)
+                if (targetId && targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault(); // Impede o salto seco
+                        
+                        // Rola suavemente até o elemento
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+
+                        // Se o menu mobile estiver aberto, fecha ele após o clique
+                        const navMenu = document.querySelector('nav#nav-menu, .nav-menu');
+                        if (navMenu && window.innerWidth <= 768) {
+                            // Ajuste 'active' se o seu menu usar outra classe para fechar
+                            navMenu.classList.remove('active'); 
+                        }
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const menuLinks = document.querySelectorAll('nav#nav-menu ul li a');
+
+        if (langToggleBtn && menuLinks.length >= 6) {
+            langToggleBtn.addEventListener('click', () => {
+                const span = langToggleBtn.querySelector('span') || langToggleBtn;
+                const currentLang = span.innerText.trim();
+
+                if (currentLang === 'EN') {
+                    // Muda para Inglês
+                    menuLinks[0].innerText = 'About';
+                    menuLinks[1].innerText = 'Skills';
+                    menuLinks[2].innerText = 'Education';
+                    menuLinks[3].innerText = 'Projects';
+                    menuLinks[4].innerText = 'Stats';
+                    menuLinks[5].innerText = 'Contact';
+                    span.innerText = 'PT';
+                } else {
+                    // Volta para Português
+                    menuLinks[0].innerText = 'Sobre';
+                    menuLinks[1].innerText = 'Habilidades';
+                    menuLinks[2].innerText = 'Formação';
+                    menuLinks[3].innerText = 'Projetos';
+                    menuLinks[4].innerText = 'Estatísticas';
+                    menuLinks[5].innerText = 'Contato';
+                    span.innerText = 'EN';
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>

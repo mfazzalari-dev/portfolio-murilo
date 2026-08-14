@@ -1786,3 +1786,121 @@ header .header-actions-right *:has(#google_translate_element),
     background-color: var(--modal-bg, #0d1117) !important;
     color: var(--text-heading) !important;
 }
+/* Força o sumiço do botão hambúrguer no Desktop */
+/* Adicionamos o seletor 'body ' na frente para aumentar a prioridade */
+body header .menu-toggle-btn,
+body header .hamburger-btn,
+body header .menu-btn {
+    display: none !important;
+}
+
+/* Restaura o botão apenas no mobile (abaixo de 768px) */
+@media (max-width: 768px) {
+    body header .menu-toggle-btn,
+    body header .hamburger-btn,
+    body header .menu-btn {
+        display: flex !important; /* ou block, dependendo do seu css original */
+    }
+}
+/* Esconde o botão hambúrguer no Desktop */
+#menu-toggle,
+.menu-toggle-btn {
+    display: none !important;
+}
+
+/* Mostra o botão hambúrguer apenas no Mobile (telas menores que 768px) */
+@media (max-width: 768px) {
+    #menu-toggle,
+    .menu-toggle-btn {
+        display: flex !important;
+    }
+}
+/* Padroniza os dois cards (Tema e Tradução) para terem exatamente o mesmo tamanho em qualquer tela */
+body header #theme-toggle,
+body header #lang-toggle,
+body header .theme-toggle-btn {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+}
+@media (max-width: 768px) {
+    /* Posiciona o container dos botões no canto direito do cabeçalho */
+    body header .header-actions-right,
+    body header .header-container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    /* Agrupa os botões à direita e deixa o layout flexível */
+    body header .header-actions-right {
+        position: absolute !important;
+        right: 15px !important;
+        top: 15px !important;
+        width: auto !important;
+        gap: 6px !important;
+    }
+
+    /* Diminui o tamanho e deixa os cards mais discretos */
+    body header #theme-toggle,
+    body header #lang-toggle,
+    body header .theme-toggle-btn {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        min-height: 32px !important;
+        max-width: 32px !important;
+        max-height: 32px !important;
+        font-size: 0.75rem !important;
+        border-radius: 8px !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Diminui o ícone interno da lua/sol para acompanhar o novo tamanho */
+    body header #theme-toggle svg,
+    body header #theme-toggle i {
+        font-size: 0.8rem !important;
+        width: 14px !important;
+        height: 14px !important;
+    }
+}
+@media (max-width: 768px) {
+    /* Libera a rolagem geral da página no mobile */
+    html, body {
+        overflow-y: auto !important;
+        height: auto !important;
+    }
+
+    /* Permite que o menu abra sem bloquear o scroll e com rolagem interna própria se for grande */
+    nav#nav-menu,
+    .nav-menu,
+    .mobile-menu,
+    header nav {
+        overflow-y: auto !important;
+        max-height: 90vh !important;
+        -webkit-overflow-scrolling: touch !important;
+        pointer-events: auto !important;
+    }
+
+    /* Garante que elementos de sobreposição (overlay) não bloqueiem o toque de rolagem */
+    .modal-overlay,
+    .menu-overlay {
+        pointer-events: none !important;
+    }
+}
