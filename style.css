@@ -193,13 +193,19 @@ header nav ul li a.active::after {
     border-radius: 2px;
 }
 
+/* ==========================================
+   PADRONIZAÇÃO DOS BOTÕES DO HEADER (LUA E IDIOMA)
+   ========================================== */
 .theme-toggle-btn {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     color: var(--text-heading);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    
+    /* Tamanho fixo igual para os dois botões */
+    width: 42px !important;
+    height: 42px !important;
+    
+    border-radius: 10px; /* Se preferir quadrado com bordas arredondadas igual ao da imagem */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,13 +213,24 @@ header nav ul li a.active::after {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    margin-left: auto;
+}
+
+/* Garante que o texto de dentro do botão (EN) e o ícone fiquem proporcionais */
+.theme-toggle-btn span {
+    font-size: 0.8rem !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+}
+
+.theme-toggle-btn i {
+    font-size: 0.95rem !important;
 }
 
 .theme-toggle-btn:hover {
     border-color: var(--card-border-hover);
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-    transform: scale(1.05);
+    transform: translateY(-2px);
+}
 }
 
 /* ==========================================
@@ -1304,4 +1321,415 @@ nav {
 .hero-content h1 span,
 .section-title h2 span {
     color: #0b3591; /* Substitua pelo código da cor exata que você deseja */
+}
+@media (max-width: 768px) {
+    /* 1. HEADER E NAVEGAÇÃO MOBILE */
+    header {
+        width: 100% !important;
+    }
+
+    .header-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 10px !important;
+        gap: 8px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* FORÇA OS BOTÕES A FICAREM MENORES E EM LINHA */
+    div.header-actions-right,
+    .header-actions-right {
+        position: static !important;
+        display: inline-flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin: 0 !important;
+        transform: none !important;
+        vertical-align: middle !important;
+    }
+
+    /* Diminui de fato o tamanho dos botões de tema e tradução */
+    .header-actions-right button, 
+    .header-actions-right select, 
+    .header-actions-right div,
+    .header-actions-right span {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        min-height: 26px !important;
+        padding: 2px !important;
+        font-size: 0.55rem !important;
+        border-radius: 4px !important;
+    }
+
+    /* Reduz os ícones internos caso sejam SVG ou imagens */
+    .header-actions-right svg, 
+    .header-actions-right img {
+        width: 12px !important;
+        height: 12px !important;
+    }
+
+    /* Transforma a navbar em uma lista flexível */
+    nav {
+        width: 100% !important;
+    }
+
+    nav ul {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 4px 8px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+        width: 100% !important;
+    }
+
+    nav ul li a {
+        font-size: 0.7rem !important;
+        padding: 2px 4px !important;
+        white-space: nowrap !important;
+    }
+
+    /* 2. CORREÇÃO DOS CARDS E GRIDS QUE ESTOURAM A TELA */
+    body {
+        overflow-x: hidden !important;
+    }
+
+    section, 
+    .hero, 
+    .about-container, 
+    .projects-grid, 
+    .github-four-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .projects-grid, 
+    .github-four-grid, 
+    .about-grid, 
+    .skills-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 15px !important;
+    }
+
+    .project-card, 
+    .github-stat-card, 
+    .about-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+/* ==========================================
+   HEADER E RESPONSIVIDADE MOBILE CORRIGIDOS
+   ========================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--header-border);
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 20px;
+}
+
+header nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: var(--text-heading);
+}
+
+.header-actions-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-toggle-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-heading);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* ==========================================
+   MOBILE (Telas menores que 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    header nav {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 4px;
+    }
+
+    header nav ul {
+        gap: 15px;
+        white-space: nowrap;
+    }
+
+    header nav ul li a {
+        font-size: 0.8rem;
+    }
+
+    .header-actions-right {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 15px;
+        padding-top: 4px;
+        border-top: 1px solid var(--card-border);
+    }
+}
+/* ==========================================
+   AJUSTES DO MENU HAMBURGUER E MOBILE
+   ========================================== */
+.menu-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-heading);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle-btn {
+        display: block; /* Exibe o botão hamburguer no mobile */
+    }
+
+    .header-container {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 12px 20px !important;
+        position: relative !important;
+    }
+
+    /* Esconde o menu de navegação por padrão no celular */
+    header nav {
+        display: none !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important; /* Centraliza perfeitamente a gaveta na tela */
+        width: 85% !important;
+        max-width: 320px !important;
+        background: var(--header-bg, #0d1117) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1)) !important;
+        border-radius: 14px !important;
+        padding: 25px 20px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+        z-index: 1000 !important;
+    }
+
+    /* Quando ativado pelo JavaScript, exibe o menu centralizado */
+    header nav.active {
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    header nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 18px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    header nav ul li a {
+        font-size: 1rem !important;
+        font-weight: 500 !important;
+    }
+
+    /* Mantém os botões de tema e idioma alinhados à direita no topo */
+    .header-actions-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        position: static !important;
+    }
+}
+/* ==========================================
+   PADRONIZAÇÃO PERFEITA DOS BOTÕES DO HEADER
+   ========================================== */
+.header-actions-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+/* Força ambos os botões a terem as mesmas dimensões exatas */
+.header-actions-right button,
+.theme-toggle-btn {
+    background: var(--card-bg, rgba(255, 255, 255, 0.03)) !important;
+    border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08)) !important;
+    color: var(--text-heading, #fff) !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Padroniza o tamanho do texto (EN) e do ícone (Lua) dentro dos botões */
+.header-actions-right button span,
+.theme-toggle-btn span {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+}
+
+.header-actions-right button i,
+.theme-toggle-btn i {
+    font-size: 0.95rem !important;
+    line-height: 1 !important;
+}
+
+/* Efeito de hover unificado */
+.header-actions-right button:hover,
+.theme-toggle-btn:hover {
+    border-color: var(--card-border-hover, #38bdf8) !important;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.25) !important;
+}
+/* ==========================================
+   BOTÕES MENORES E CENTRALIZADOS NO MOBILE
+   ========================================== */
+@media (max-width: 768px) {
+    .header-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 15px !important;
+        position: relative !important;
+    }
+
+    /* Agrupa o tema e o idioma bem no centro ou alinhados */
+    .header-actions-right {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin: 0 auto !important; /* Centraliza o bloco dos botões */
+    }
+
+    /* Reduz o tamanho dos cards (botões) para menores */
+    .menu-toggle-btn,
+    .header-actions-right button,
+    .theme-toggle-btn {
+        width: 34px !important;
+        height: 34px !important;
+        min-width: 34px !important;
+        min-height: 34px !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Diminui proporcionalmente o ícone da lua e o texto "EN" */
+   .header-actions-right button span,
+    .theme-toggle-btn span,
+    #lang-text {
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+    }
+
+    .header-actions-right button i,
+    .theme-toggle-btn i,
+    .menu-toggle-btn i {
+        font-size: 0.8rem !important;
+    }
+}
+/* Centraliza perfeitamente o texto do idioma no card */
+.header-actions-right button,
+.theme-toggle-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.header-actions-right button span,
+.theme-toggle-btn span,
+#lang-text {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
 }

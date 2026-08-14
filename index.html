@@ -13,30 +13,37 @@
 
    <header>
     <div class="header-container">
-        <nav>
+        <!-- 1. Esquerda: Botão Hamburguer -->
+        <button id="menu-toggle" class="menu-toggle-btn" aria-label="Abrir menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- 2. Centro: Menu de Navegação (Gaveta centralizada) -->
+        <nav id="nav-menu">
             <ul>
-                <li><a href="#sobre" data-translate="nav-sobre">Sobre</a></li>
-                <li><a href="#habilidades" data-translate="nav-habilidades">Habilidades</a></li>
-                <li><a href="#formacao" data-translate="nav-formacao">Formação</a></li>
-                <li><a href="#projetos" data-translate="nav-projetos">Projetos</a></li>
-                <li><a href="#github-stats" data-translate="nav-estatisticas">Estatísticas</a></li>
-                <li><a href="#contato" data-translate="nav-contato">Contato</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#education">Formação</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#stats">Estatísticas</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
-        
-        <div class="header-actions-right">
-            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
-                <i class="fas fa-moon" id="theme-icon"></i>
-            </button>
 
-            <button id="lang-toggle" class="theme-toggle-btn" aria-label="Traduzir Página" title="Mudar para Inglês">
-                <i class="fas fa-globe" id="lang-icon"></i>
-                <span id="lang-text" style="font-size: 0.75rem; font-weight: bold; margin-left: 4px;">EN</span>
+        <!-- 3. Direita: Botões de Ação Padronizados -->
+        <div class="header-actions-right">
+            <!-- Botão do Tema -->
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <!-- Botão de Idioma -->
+            <button id="lang-toggle" class="theme-toggle-btn" aria-label="Mudar idioma">
+                <span>EN</span>
             </button>
         </div>
     </div>
 </header>
-
     <section class="hero">
         <div class="hero-content">
             <div class="status-badge" data-translate="hero-badge">
@@ -761,6 +768,16 @@
             }
         });
     </script>
-</body>
+ <!-- Seus outros scripts do site -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
 
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
 </html>
