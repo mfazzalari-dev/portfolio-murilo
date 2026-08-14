@@ -817,31 +817,33 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const langToggleBtn = document.getElementById('lang-toggle');
-        const menuLinks = document.querySelectorAll('nav#nav-menu ul li a');
-
-        if (langToggleBtn && menuLinks.length >= 6) {
+        
+        if (langToggleBtn) {
             langToggleBtn.addEventListener('click', () => {
                 const span = langToggleBtn.querySelector('span') || langToggleBtn;
                 const currentLang = span.innerText.trim();
+                
+                // Seleciona os links dentro do menu com segurança
+                const menuLinks = document.querySelectorAll('nav#nav-menu ul li a');
 
-                if (currentLang === 'EN') {
-                    // Muda para Inglês
-                    menuLinks[0].innerText = 'About';
-                    menuLinks[1].innerText = 'Skills';
-                    menuLinks[2].innerText = 'Education';
-                    menuLinks[3].innerText = 'Projects';
-                    menuLinks[4].innerText = 'Stats';
-                    menuLinks[5].innerText = 'Contact';
-                    span.innerText = 'PT';
-                } else {
-                    // Volta para Português
-                    menuLinks[0].innerText = 'Sobre';
-                    menuLinks[1].innerText = 'Habilidades';
-                    menuLinks[2].innerText = 'Formação';
-                    menuLinks[3].innerText = 'Projetos';
-                    menuLinks[4].innerText = 'Estatísticas';
-                    menuLinks[5].innerText = 'Contato';
-                    span.innerText = 'EN';
+                if (menuLinks && menuLinks.length >= 6) {
+                    if (currentLang === 'EN') {
+                        menuLinks[0].innerText = 'About';
+                        menuLinks[1].innerText = 'Skills';
+                        menuLinks[2].innerText = 'Education';
+                        menuLinks[3].innerText = 'Projects';
+                        menuLinks[4].innerText = 'Stats';
+                        menuLinks[5].innerText = 'Contact';
+                        span.innerText = 'PT';
+                    } else {
+                        menuLinks[0].innerText = 'Sobre';
+                        menuLinks[1].innerText = 'Habilidades';
+                        menuLinks[2].innerText = 'Formação';
+                        menuLinks[3].innerText = 'Projetos';
+                        menuLinks[4].innerText = 'Estatísticas';
+                        menuLinks[5].innerText = 'Contato';
+                        span.innerText = 'EN';
+                    }
                 }
             });
         }
