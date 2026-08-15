@@ -580,23 +580,31 @@
         const savedTheme = localStorage.getItem('portfolio-theme');
         if (savedTheme === 'light') {
             body.classList.add('light-theme');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-           
-            if (body.classList.contains('light-theme')) {
-                localStorage.setItem('portfolio-theme', 'light');
+            if (themeIcon) {
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
-            } else {
-                localStorage.setItem('portfolio-theme', 'dark');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
             }
-        });
+        }
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                
+                if (body.classList.contains('light-theme')) {
+                    localStorage.setItem('portfolio-theme', 'light');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    }
+                } else {
+                    localStorage.setItem('portfolio-theme', 'dark');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
+                }
+            });
+        }
     </script>
 
     <script>
