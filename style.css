@@ -1903,4 +1903,13 @@ body header .theme-toggle-btn {
     .menu-overlay {
         pointer-events: none !important;
     }
+}/* Espaçamento para os cards de formação complementar */
+.education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px; /* Controla o espaço exato entre um card e outro */
+}
+
+.education-card {
+    margin-bottom: 40px; /* Respiro extra de segurança */
 }
